@@ -22,6 +22,11 @@ class HomePage extends StatelessWidget {
                 child: CircularProgressIndicator(),
               );
             }
+            if (state is ProductLoadedState) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
             return Container();
           },
         ),
