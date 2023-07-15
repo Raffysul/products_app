@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:products_app/repos/repositories.dart';
+import 'package:products_app/screens/home_page.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -19,8 +22,10 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.poppinsTextTheme(),
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(),
+      home: RepositoryProvider(
+        create: (context) => ProductRepository(),
+        child: const HomePage(),
+      ),
     );
   }
 }
-
