@@ -14,7 +14,8 @@ class UserPage extends StatefulWidget {
   State<UserPage> createState() => _UserPageState();
 }
 
-class _UserPageState extends State<UserPage> with SingleTickerProviderStateMixin {
+class _UserPageState extends State<UserPage>
+    with SingleTickerProviderStateMixin {
   final _searchcontroller = TextEditingController();
   late TabController _tabController;
 
@@ -90,9 +91,12 @@ class _UserPageState extends State<UserPage> with SingleTickerProviderStateMixin
                                     color: Color(0xFF000000)),
                               ),
                             ),
-                            const SizedBox(height: 10,),
+                            const SizedBox(
+                              height: 10,
+                            ),
                             Container(
-                              margin: const EdgeInsets.symmetric(horizontal: 12),
+                              margin:
+                                  const EdgeInsets.symmetric(horizontal: 12),
                               //padding: const EdgeInsets.all(16),
                               decoration: BoxDecoration(
                                 color: const Color(0xFFEFEEEE),
@@ -103,7 +107,8 @@ class _UserPageState extends State<UserPage> with SingleTickerProviderStateMixin
                                 keyboardType: TextInputType.text,
                                 autofillHints: const [AutofillHints.name],
                                 textInputAction: TextInputAction.done,
-                                autovalidateMode: AutovalidateMode.onUserInteraction,
+                                autovalidateMode:
+                                    AutovalidateMode.onUserInteraction,
                                 decoration: InputDecoration(
                                   prefixIcon: const Icon(
                                     Icons.search,
@@ -112,11 +117,12 @@ class _UserPageState extends State<UserPage> with SingleTickerProviderStateMixin
                                   suffixIcon: _searchcontroller.text.isEmpty
                                       ? Container(width: 0)
                                       : IconButton(
-                                      onPressed: () => _searchcontroller.clear(),
-                                      icon: const Icon(
-                                        Icons.close,
-                                        color: Color(0xFF000000),
-                                      )),
+                                          onPressed: () =>
+                                              _searchcontroller.clear(),
+                                          icon: const Icon(
+                                            Icons.close,
+                                            color: Color(0xFF000000),
+                                          )),
                                   labelText: 'Search',
                                   labelStyle: const TextStyle(
                                     color: Color(0xFF000000),
@@ -139,7 +145,9 @@ class _UserPageState extends State<UserPage> with SingleTickerProviderStateMixin
                           ],
                         ),
                       ),
-                      const SizedBox(height: 20,),
+                      const SizedBox(
+                        height: 20,
+                      ),
                       Expanded(
                         child: DefaultTabController(
                           length: 4,
@@ -151,7 +159,8 @@ class _UserPageState extends State<UserPage> with SingleTickerProviderStateMixin
                                 unselectedLabelColor: const Color(0xFF9A9A9D),
                                 padding: const EdgeInsets.only(left: 24),
                                 //indicatorColor: const Color(0xFFFE6D8E),
-                                labelStyle: const TextStyle(fontSize: 17, fontWeight: FontWeight.w400),
+                                labelStyle: const TextStyle(
+                                    fontSize: 17, fontWeight: FontWeight.w400),
                                 indicatorSize: TabBarIndicatorSize.label,
                                 indicatorWeight: 2.0,
                                 isScrollable: true,
