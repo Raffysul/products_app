@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:products_app/blocs/app_blocs.dart';
 import 'package:products_app/repos/repositories.dart';
 import 'package:products_app/screens/home_page.dart';
 
@@ -22,8 +23,8 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.poppinsTextTheme(),
         primarySwatch: Colors.deepOrange,
       ),
-      home: RepositoryProvider(
-        create: (context) => ProductRepository(),
+      home: BlocProvider(
+        create: (_) => ProductBloc(),
         child: const HomePage(),
       ),
     );

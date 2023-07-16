@@ -7,7 +7,6 @@ import '../blocs/app_events.dart';
 import '../blocs/app_states.dart';
 import '../repos/repositories.dart';
 
-
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -20,35 +19,18 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => ProductBloc(
-        RepositoryProvider.of<ProductRepository>(context),
-      )..add(LoadProductEvent()),
-      child: Scaffold(
-        backgroundColor: const Color(0xFFFF4B3A),
-        body: BlocBuilder<ProductBloc, ProductState>(
-          builder: (context, state) {
-            if (state is ProductLoadingState) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-            if (state is ProductLoadedState) {
-              return SingleChildScrollView(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _logo(),
-                      _headerText(),
-                      _headerImages(),
-                      _startButton(),
-                    ],
-                  ),
-              );
-            }
-            return Container();
-          },
+    return Scaffold(
+      backgroundColor: const Color(0xFFFF4B3A),
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _logo(),
+            _headerText(),
+            _headerImages(),
+            _startButton(),
+          ],
         ),
       ),
     );
@@ -142,7 +124,7 @@ class _HomePageState extends State<HomePage> {
                 shape: const StadiumBorder(),
                 backgroundColor: const Color(0xFFFFFFFF),
                 padding:
-                const EdgeInsets.symmetric(horizontal: 100, vertical: 25),
+                    const EdgeInsets.symmetric(horizontal: 100, vertical: 25),
               ),
               child: const Text(
                 'Get Started',

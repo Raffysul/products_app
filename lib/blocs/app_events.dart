@@ -3,11 +3,11 @@ import 'package:flutter/cupertino.dart';
 //import 'package:flutter/material.dart';
 
 @immutable
-abstract class ProductEvent extends Equatable {
-  const ProductEvent();
+abstract class ProductEvent {
+  //const ProductEvent();
 }
 
 class LoadProductEvent extends ProductEvent {
-  @override
-  List<Object?> get props => [];
+  // @override
+  // List<Object?> get props => [];
 }
