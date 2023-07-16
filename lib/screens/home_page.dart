@@ -75,23 +75,29 @@ class _HomePageState extends State<HomePage> {
   Widget _headerImages() {
     return Row(
       children: [
-        Stack(
-          children: [
-            Image.asset(
-              'assets/images/ToyFace2.png',
-              height: 300,
-              width: 350,
-            ),
-            Positioned(
-              top: 10,
-              right: 100,
-              child: Image.asset(
-                'assets/images/ToyFace1.png',
-                height: 300,
-                width: 300,
+        Expanded(
+          child: Stack(
+            children: [
+              Positioned(
+                right: 0,
+                bottom: 0,
+                child: Image.asset(
+                  'assets/images/ToyFace2.png',
+                  height: 300,
+                  width: 300,
+                  //fit: BoxFit.cover,
+                ),
               ),
-            )
-          ],
+              Align(
+                widthFactor: 0.7,
+                child: Image.asset(
+                  'assets/images/ToyFace1.png',
+                  height: 350,
+                  width: 350,
+                ),
+              ),
+            ],
+          ),
         ),
         //for (int i = 0; i < myImages.length; i++)
         //   Align(
