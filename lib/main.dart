@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         textTheme: GoogleFonts.poppinsTextTheme(),
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.deepOrange,
       ),
       home: RepositoryProvider(
         create: (context) => ProductRepository(),

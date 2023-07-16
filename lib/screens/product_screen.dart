@@ -21,6 +21,7 @@ class _ProductScreenState extends State<ProductScreen> {
         RepositoryProvider.of<ProductRepository>(context),
       )..add(LoadProductEvent()),
       child: Scaffold(
+        backgroundColor: const Color(0xFFF2F2F2),
         body: BlocBuilder<ProductBloc, ProductState>(
           builder: (context, state) {
             if (state is ProductLoadingState) {
@@ -29,9 +30,7 @@ class _ProductScreenState extends State<ProductScreen> {
               );
             }
             if (state is ProductLoadedState) {
-              return Scaffold(
-                backgroundColor: const Color(0xFFF2F2F2),
-                body: ListView.builder(
+              return ListView.builder(
                     padding: const EdgeInsets.all(24),
                     scrollDirection: Axis.horizontal,
                     itemCount: state.products.length,
@@ -111,8 +110,7 @@ class _ProductScreenState extends State<ProductScreen> {
                           ),
                         ],
                       );
-                    }),
-              );
+                    });
             }
             return Container();
           },

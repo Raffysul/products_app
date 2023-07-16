@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:products_app/screens/bottom_nav.dart';
+
+import '../blocs/app_blocs.dart';
+import '../blocs/app_events.dart';
+import '../blocs/app_states.dart';
+import '../repos/repositories.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -14,20 +20,35 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return BlocProvider(
+      create: (context) => ProductBloc(
+        RepositoryProvider.of<ProductRepository>(context),
+      )..add(LoadProductEvent()),
       child: Scaffold(
         backgroundColor: const Color(0xFFFF4B3A),
-        body: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _logo(),
-              _headerText(),
-              _headerImages(),
-              _startButton(),
-            ],
-          ),
+        body: BlocBuilder<ProductBloc, ProductState>(
+          builder: (context, state) {
+            if (state is ProductLoadingState) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            if (state is ProductLoadedState) {
+              return SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _logo(),
+                      _headerText(),
+                      _headerImages(),
+                      _startButton(),
+                    ],
+                  ),
+              );
+            }
+            return Container();
+          },
         ),
       ),
     );
@@ -41,11 +62,11 @@ class _HomePageState extends State<HomePage> {
         children: const [
           CircleAvatar(
             backgroundColor: Colors.white,
-            radius: 30,
+            radius: 25,
             child: Icon(
               Icons.shopping_cart_outlined,
               color: Color(0xFFFF4B3A),
-              size: 35,
+              size: 30,
             ),
           ),
         ],
@@ -56,13 +77,13 @@ class _HomePageState extends State<HomePage> {
   // insert header text
   Widget _headerText() {
     return Container(
-      margin: const EdgeInsets.all(30),
+      margin: const EdgeInsets.all(12),
       child: Column(
         children: const [
           Text(
-            'Shop here for all of your products',
+            'Shop here for all your products',
             style: TextStyle(
-                fontSize: 50,
+                fontSize: 40,
                 fontWeight: FontWeight.w800,
                 color: Color(0xFFFFFFFF)),
           ),
