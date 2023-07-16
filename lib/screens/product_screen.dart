@@ -4,6 +4,7 @@ import 'package:products_app/blocs/app_blocs.dart';
 import 'package:products_app/blocs/app_events.dart';
 import 'package:products_app/blocs/app_states.dart';
 import 'package:products_app/repos/repositories.dart';
+import 'package:products_app/screens/product_info.dart';
 
 class ProductScreen extends StatefulWidget {
   const ProductScreen({super.key});
@@ -51,16 +52,25 @@ class _ProductScreenState extends State<ProductScreen> {
                             children: [
                               Align(
                                 alignment: Alignment.topCenter,
-                                child: Container(
-                                  margin: const EdgeInsets.only(left: 50),
-                                  alignment: Alignment.topCenter,
-                                  child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(30),
-                                      child: Image.network(
-                                        myProduct.imageUrl[0],
-                                        width: 180,
-                                        height: 200,
-                                      )),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (_) =>
+                                                const ProductInfo()));
+                                  },
+                                  child: Container(
+                                    margin: const EdgeInsets.only(left: 50),
+                                    alignment: Alignment.topCenter,
+                                    child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(30),
+                                        child: Image.network(
+                                          myProduct.imageUrl[0],
+                                          width: 180,
+                                          height: 200,
+                                        )),
+                                  ),
                                 ),
                               ),
                               const SizedBox(
