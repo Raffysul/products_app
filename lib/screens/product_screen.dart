@@ -13,8 +13,6 @@ class ProductScreen extends StatefulWidget {
 }
 
 class _ProductScreenState extends State<ProductScreen> {
-
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -42,32 +40,64 @@ class _ProductScreenState extends State<ProductScreen> {
                         children: [
                           Container(
                             margin: const EdgeInsets.all(15.0),
-                            width: 230,
-                            height: 260,
+                            width: 250,
+                            height: 320,
                             decoration: BoxDecoration(
                               color: const Color(0xFFffffff),
                               borderRadius: BorderRadius.circular(30.0),
                             ),
-                            child: const Text(
-                              'Cubana Sneakers',
-                              textAlign: TextAlign.end,
-                              style: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(0xFF000000)),
-                            ),
                           ),
-                          Align(
-                            alignment: Alignment.topCenter,
-                            child: Container(
-                              margin: EdgeInsets.only(left: 40),
-                              alignment: Alignment.topCenter,
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(30),
-                                child: Image.network(myProduct.imageUrl[0],
-                                )
+                          Column(
+                            children: [
+                              Align(
+                                alignment: Alignment.topCenter,
+                                child: Container(
+                                  margin: const EdgeInsets.only(left: 50),
+                                  alignment: Alignment.topCenter,
+                                  child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(30),
+                                      child: Image.network(
+                                        myProduct.imageUrl[0],
+                                        width: 180,
+                                        height: 200,
+                                      )),
+                                ),
                               ),
-                            ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Container(
+                                height: 70,
+                                width: 200,
+                                margin: const EdgeInsets.only(left: 30),
+                                child: Text(
+                                  myProduct.title,
+                                  textAlign: TextAlign.center,
+                                  overflow: TextOverflow.clip,
+                                  maxLines: 2,
+                                  style: const TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.w600,
+                                      color: Color(0xFF000000)),
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Container(
+                                margin: const EdgeInsets.only(left: 30),
+                                child: Text(
+                                  '\$${myProduct.price.toStringAsFixed(2)}',
+                                  textAlign: TextAlign.center,
+                                  //overflow: TextOverflow.clip,
+                                  //maxLines: 4,
+                                  style: const TextStyle(
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.w700,
+                                      color: Color(0xFFFA4A0C)),
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       );
@@ -81,4 +111,3 @@ class _ProductScreenState extends State<ProductScreen> {
     );
   }
 }
-
