@@ -99,28 +99,6 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ),
-        //for (int i = 0; i < myImages.length; i++)
-        //   Align(
-        //     //alignment: Alignment.bottomRight,
-        //     widthFactor: 1.0,
-        //     heightFactor: 1.0,
-        //     child: Image.asset(
-        //       myImages[i],
-        //       height: 300,
-        //       width: 180,
-        //     ),
-        //   ),
-        // Image.asset(
-        //   'assets/images/ToyFace1.png',
-        //   height: 300,
-        //   width: 350,
-        //   //fit: BoxFit.contain,
-        // ),
-        // Image.asset(
-        //   'assets/images/ToyFace2.png',
-        //   height: 60,
-        //   width: 60,
-        // ),
       ],
     );
   }
