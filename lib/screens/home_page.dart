@@ -21,18 +21,32 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFFF4B3A),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _logo(),
-            _headerText(),
-            _headerImages(),
-            _startButton(),
-          ],
-        ),
+      body: BlocBuilder<ProductBloc, ProductState>(
+        builder: (context, state) {
+          if (state is ProductLoadingState) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }else if (state is ProductLoadedState) {
+            //List<ProductModel> productList = state.products;
+            return SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _logo(),
+                  _headerText(),
+                  _headerImages(),
+                  _startButton(),
+                ],
+              ),
+            );
+          }
+
+          return Container();
+        },
       ),
+
     );
   }
 
