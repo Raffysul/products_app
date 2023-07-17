@@ -1,16 +1,6 @@
-# products_app
+# ShopHere
+A simple flutter mobile app where users can buy and order for any product.
 
-A new Flutter project.
+![screenshot1](https://github.com/Raffysul/products_app/assets/72406927/8827cc9c-e704-488b-ac85-0c4af280a6f7)
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![screenshot2](https://github.com/Raffysul/products_app/assets/72406927/cb842613-1022-4af5-8cdc-75a5cee4277c)
