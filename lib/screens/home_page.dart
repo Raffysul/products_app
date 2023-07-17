@@ -1,11 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:products_app/screens/bottom_nav.dart';
-
-import '../blocs/app_blocs.dart';
-import '../blocs/app_events.dart';
-import '../blocs/app_states.dart';
-import '../repos/repositories.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -13,40 +7,28 @@ class HomePage extends StatefulWidget {
   @override
   State<HomePage> createState() => _HomePageState();
 }
-
 class _HomePageState extends State<HomePage> {
-  //List myImages = ['assets/images/ToyFace1.png', 'assets/images/ToyFace2.png'];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFFF4B3A),
-      body: BlocBuilder<ProductBloc, ProductState>(
-        builder: (context, state) {
-          if (state is ProductLoadingState) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }else if (state is ProductLoadedState) {
-            //List<ProductModel> productList = state.products;
-            return SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _logo(),
-                  _headerText(),
-                  _headerImages(),
-                  _startButton(),
-                ],
-              ),
-            );
-          }
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: const Color(0xFFFF4B3A),
+        body: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _logo(),
+              _headerText(),
+              _headerImages(),
+              _startButton(),
+            ],
+          ),
+        ),
 
-          return Container();
-        },
+
       ),
-
     );
   }
 
